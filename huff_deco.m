@@ -1,4 +1,4 @@
-function dsig = myhuffmandeco(comp,dict) % comp must be a numeric vector (row or col)
+function dsig = huff_deco(comp,dict) % comp must be a numeric vector (row or col)
 dsig = {};
 [n1, n2] = size(comp);
 if n1 > n2

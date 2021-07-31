@@ -1,4 +1,4 @@
-function comp = myhuffmanenco(sig, dict) %sig can be a numeric vector (row or col) or a cell aray
+function comp = huff_enco(sig, dict) %sig can be a numeric vector (row or col) or a cell aray
 if iscell(sig)
     type = 'c';
 else

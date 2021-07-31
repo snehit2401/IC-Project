@@ -1,4 +1,4 @@
-function dict = myhuffmandict(symbols, p)
+function dict = huff_algo(symbols, p)
 
 [~, n] = size(symbols);
 [~, idx] = sort(-p);
@@ -52,13 +52,13 @@ while flag == 'f'
         end
     end
     for i = 1:n
-        if char(adjList(idx(i),3)) == 'f' && idx(i) != min1
+        if char((adjList(idx(i),3)) == 'f' && idx(i) ~= min1)
             min2 = idx(i);
             break
         end
     end
     % create new node
-    n += 1;
+    n = n + 1;
     adjList(n,1) = cell2mat(adjList(min1,2)) + cell2mat(adjList(min2,2));
     adjList(n,2) = cell2mat(adjList(min1,2)) + cell2mat(adjList(min2,2));
     adjList(n,3) = 'f';
