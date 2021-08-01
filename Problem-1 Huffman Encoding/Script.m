@@ -29,23 +29,33 @@ C1 = categorical(A1,B1,G1);
 C2 = categorical(A2,B2,G2);
 C3 = categorical(A3,B3,G3);
 
+figure;
 h1 = histogram(C1,'Normalization','probability');
+xlabel('symbols');
+ylabel('probability');
+title('source-1');
 figure;
 h2 = histogram(C2,'Normalization','probability');
+xlabel('symbols');
+ylabel('probability');
+title('source-2');
 figure;
 h3 = histogram(C3,'Normalization','probability');
+xlabel('symbols');
+ylabel('probability');
+title('source-3');
 
 p1 = h1.Values;
 p2 = h2.Values;
 p3 = h3.Values;
 
-dict1 = huff_algo(B1,p1);
-dict2 = huff_algo(B2,p2);
-dict3 = huff_algo(B3,p3);
+dict1 = huffmandict(B1,p1);
+dict2 = huffmandict(B2,p2);
+dict3 = huffmandict(B3,p3);
 
-huff_code1 = huff_enco(A1,dict1);
-huff_code2 = huff_enco(A2,dict2);
-huff_code3 = huff_enco(A3,dict3);
+huff_code1 = huffmanenco(A1,dict1);
+huff_code2 = huffmanenco(A2,dict2);
+huff_code3 = huffmanenco(A3,dict3);
 
 code_file1 = fopen('code_file1.txt','w');
 code_file2 = fopen('code_file2.txt','w');
@@ -67,6 +77,6 @@ code1 = fread(code_file1);
 code2 = fread(code_file2);
 code3 = fread(code_file3);
 
-message1 = strjoin(huff_deco(code1,dict1),"");
-message2 = strjoin(huff_deco(code2,dict2),"");
-message3 = strjoin(huff_deco(code3,dict3),"");
+message1 = strjoin(huffmandeco(code1,dict1),"");
+message2 = strjoin(huffmandeco(code2,dict2),"");
+message3 = strjoin(huffmandeco(code3,dict3),"");
