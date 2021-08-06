@@ -31,7 +31,7 @@ while i <= n
     codeSize = size(code, 2);
     comp(k:k+(codeSize-1)) = code;
     k = k + codeSize;
-    i += 1;
+    i = i+1;
 end
     
 end

@@ -8,6 +8,15 @@ else
 end
 dictSize = size(dict,1);
 
+N = size(dict,1);
+m = zeros(1,N);
+for k = 1:N
+    m(k)  = length(cell2mat(dict(k,2)));
+end
+[~,I] = sort(m);
+dict(:,1) = dict(I,1);
+dict(:,2) = dict(I,2);
+
 function symbol = getSymbol(code)
 symbol = NaN;
 for j = 1:dictSize
@@ -17,7 +26,7 @@ for j = 1:dictSize
     if tmpCodeSize > codeSize
         break;
     end
-    if codeSize == tmpCodeSize && tmpCode == code
+    if (isequal(codeSize,tmpCodeSize) && isequal(tmpCode,code))
         symbol = cell2mat(dict(j,1));
         break;
     end
@@ -29,12 +38,12 @@ ending = 1;
 while ending < n
     symbol = getSymbol(comp(beginning:ending));
     while isnan(symbol)
-        ending += 1;
+        ending = ending + 1;
         symbol = getSymbol(comp(beginning:ending));
     end
-    dsig(size(dsig,2)+1) = symbol;
-    if ending != n
-        ending += 1;
+    dsig(size(dsig,2)+1) = cellstr(num2cell(symbol));
+    if ending ~= n
+        ending = ending + 1;
         beginning = ending;
     end
 end

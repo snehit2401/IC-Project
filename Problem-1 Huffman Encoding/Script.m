@@ -49,13 +49,13 @@ p1 = h1.Values;
 p2 = h2.Values;
 p3 = h3.Values;
 
-dict1 = huffmandict(B1,p1);
-dict2 = huffmandict(B2,p2);
-dict3 = huffmandict(B3,p3);
+dict1 = huff_dict(B1,p1);
+dict2 = huff_dict(B2,p2);
+dict3 = huff_dict(B3,p3);
 
-huff_code1 = huffmanenco(A1,dict1);
-huff_code2 = huffmanenco(A2,dict2);
-huff_code3 = huffmanenco(A3,dict3);
+huff_code1 = huff_enco(A1,dict1);
+huff_code2 = huff_enco(A2,dict2);
+huff_code3 = huff_enco(A3,dict3);
 
 code_file1 = fopen('code_file1.txt','w');
 code_file2 = fopen('code_file2.txt','w');
@@ -73,10 +73,10 @@ code_file1 = fopen('code_file1.txt');
 code_file2 = fopen('code_file2.txt');
 code_file3 = fopen('code_file3.txt');
 
-code1 = fread(code_file1);
-code2 = fread(code_file2);
-code3 = fread(code_file3);
+code1 = (fread(code_file1))';
+code2 = (fread(code_file2))';
+code3 = (fread(code_file3))';
 
-message1 = strjoin(huffmandeco(code1,dict1),"");
-message2 = strjoin(huffmandeco(code2,dict2),"");
-message3 = strjoin(huffmandeco(code3,dict3),"");
+message1 = strjoin(huff_deco(code1,dict1),"");
+message2 = strjoin(huff_deco(code2,dict2),"");
+message3 = strjoin(huff_deco(code3,dict3),"");
