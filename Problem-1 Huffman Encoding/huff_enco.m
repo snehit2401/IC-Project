@@ -1,4 +1,5 @@
 function comp = huff_enco(sig, dict) %sig can be a numeric vector (row or col) or a cell aray
+% finding source type
 if iscell(sig)
     type = 'c';
 else
@@ -13,6 +14,7 @@ end
 dictSize = size(dict,1);
 
 comp = [];
+% generating code
 function code = getCode(value)
 if type == 'c'
     value = cell2mat(value);

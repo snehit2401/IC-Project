@@ -1,4 +1,5 @@
 function dsig = huff_deco(comp,dict) % comp must be a numeric vector (row or col)
+% finding size and sorting index
 dsig = {};
 [n1, n2] = size(comp);
 if n1 > n2
@@ -17,6 +18,7 @@ end
 dict(:,1) = dict(I,1);
 dict(:,2) = dict(I,2);
 
+% finding symbol from dict iteratively
 function symbol = getSymbol(code)
 symbol = NaN;
 for j = 1:dictSize
@@ -33,6 +35,7 @@ for j = 1:dictSize
 end
 end
 
+% generating message from symbols
 beginning = 1;
 ending = 1;
 while ending < n

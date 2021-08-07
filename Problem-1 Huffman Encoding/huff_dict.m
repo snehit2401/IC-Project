@@ -1,5 +1,6 @@
 function dict = huff_dict(symbols, p)
 
+% finding size and sorting index
 [~, n] = size(symbols);
 [~, idx] = sort(p,'descend');
 
